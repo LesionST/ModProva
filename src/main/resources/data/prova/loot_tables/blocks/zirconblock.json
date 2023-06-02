@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:block",
+  "pools": [
+    {
+      "rolls": 1,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "prova:corason",
+          "functions": [
+            {
+              "function": "minecraft:set_name",
+              "name": "Mecagoenlaputa"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

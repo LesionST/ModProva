@@ -1,0 +1,7 @@
+{
+  "variants": {
+    "tipus=3": {"model": "prova:block/blockcanvia"},
+    "tipus=1" : {"model": "minecraft:block/dirt"},
+    "tipus=2": {"model": "minecraft:block/cobblestone"}
+  }
+}

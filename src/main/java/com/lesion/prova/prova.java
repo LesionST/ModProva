@@ -1,6 +1,14 @@
 package com.lesion.prova;
 
+import com.lesion.prova.networking.ModMessages;
+import com.lesion.prova.block.ProvaBlocks;
+import com.lesion.prova.item.ProvaItems;
+import com.lesion.prova.villager.ProvaAldeanos;
+import com.lesion.prova.world.feature.ProvaFeatures;
+import com.lesion.prova.world.feature.ProvaPlacedFeatures;
 import com.mojang.logging.LogUtils;
+import net.minecraft.client.renderer.ItemBlockRenderTypes;
+import net.minecraft.client.renderer.RenderType;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -22,10 +30,16 @@ public class prova
     public prova()
     {
         IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
+        ProvaItems.register(modEventBus);
+        ProvaBlocks.Registrar(modEventBus);
+
+        ProvaAldeanos.register(modEventBus);
+
+        ProvaFeatures.register(modEventBus);
+        ProvaPlacedFeatures.register(modEventBus);
 
         // Register the commonSetup method for modloading
         modEventBus.addListener(this::commonSetup);
-
 
         // Register ourselves for server and other game events we are interested in
         MinecraftForge.EVENT_BUS.register(this);
@@ -33,9 +47,13 @@ public class prova
 
     private void commonSetup(final FMLCommonSetupEvent event)
     {
+        event.enqueueWork(() -> {
+            ModMessages.register();
 
+
+            ProvaAldeanos.registerPOIs();
+        });
     }
-
 
     // You can use EventBusSubscriber to automatically register all static methods in the class annotated with @SubscribeEvent
     @Mod.EventBusSubscriber(modid = MOD_ID, bus = Mod.EventBusSubscriber.Bus.MOD)
@@ -44,7 +62,7 @@ public class prova
         @SubscribeEvent
         public static void onClientSetup(FMLClientSetupEvent event)
         {
-
+            ItemBlockRenderTypes.setRenderLayer(ProvaBlocks.CULTIVOS.get(), RenderType.cutout());
         }
     }
 }

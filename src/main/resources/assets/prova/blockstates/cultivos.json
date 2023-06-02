@@ -1,0 +1,11 @@
+{
+  "variants": {
+    "edad=0": {"model": "prova:block/blueberry_stage0"},
+    "edad=1": {"model": "prova:block/blueberry_stage1"},
+    "edad=2": {"model": "prova:block/blueberry_stage2"},
+    "edad=3": {"model": "prova:block/blueberry_stage3"},
+    "edad=4": {"model": "prova:block/blueberry_stage4"},
+    "edad=5": {"model": "prova:block/blueberry_stage5"},
+    "edad=6": {"model": "prova:block/blueberry_stage6"}
+  }
+}
